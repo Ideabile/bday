@@ -3,6 +3,13 @@ import encryptor from 'simple-encryptor';
 document.body.classList.add('bg-to-wite');
 
 const next = (arr, ...args) => arr.length > 0 ? arr.shift()(...args) : null;
+const track = (id) => {
+    if (!window.ga) return;
+    window.dataLayer.push({
+        event: 'screen',
+        screen: id
+    });
+}
 
 const typingTitle = (titles, cb) => {
 
@@ -75,6 +82,8 @@ const $submit = document.querySelector('.submit');
 
 const slide = (id) => {
 
+    track(id);
+
     const found = slides.filter(s => s.id === id);
     if (found.length === 0) {
         console.warn(`Slide ${slide} not found`);
@@ -95,6 +104,7 @@ const slide = (id) => {
         slide.classList.add('slide--show-controls');
 
     });
+
 
 };
 
