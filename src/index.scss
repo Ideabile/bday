@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou');
+html{
+    min-height: 100%;
+}
+
+body {
+    font-size: 1.6em;
+    padding: 2em;
+    min-height: calc(100vh - 4em);
+
+    @media(min-width: 60em) {
+        font-size: 2em;
+        padding: 4em;
+        min-height: calc(100vh - 8em);
+    }
+
+    background-color: white;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes bgWiteToBlack {
+    from {
+        background-color: white;
+    }
+    to{
+        background-color: #111;
+    }
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+body.bg-to-wite {
+    background-color: #111;
+    color: white;
+    animation-name: bgWiteToBlack;
+    animation-duration: 2s;
+}
+
+.slide {
+    width: 80vw;
+    @media(min-width: 60em) {
+        width: 40vw;
+    }
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+input.error{
+    border-color: red;
+}
+
+a {
+    color: red;
+}
+
+.slide .controls {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    opacity: 0;
+    margin: .7em;
+
+    > *:first-child {
+        margin-right: .7em;
+    }
+}
+
+.slide.slide--show-controls .controls{
+    opacity: 1;
+    animation: opacityFadeIn 2s steps(40, end);
+}
+
+@keyframes opacityFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+button, input {
+    font-size: 2em;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+button {
+    padding: .2em .6em;
+}
+
+input {
+    padding: .2em;
+    width: auto;
+}
+
+h1 {
+    display: inline-block;
+    text-shadow: #FC0 1px 0 10px;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    line-height: 1.2em;
+}
+
+h1 span {
+    white-space: normal;
+    &:last-child {
+        border-right: .15em solid orange; /* The typwriter cursor */
+        animation: blinkOpacity .2s steps(40, end),
+            blinkTextShadow 3s 2s infinite;
+    }
+}
+
+@keyframes blinkTextShadow {
+    from,to {text-shadow: rgba(255,204,0, 1) 1px 0 10px;}
+    50% {text-shadow: rgba(255,204,0,0.5) 1px 0 10px;}
+}
+
+@keyframes blinkOpacity {
+    from {color: rgba(255,255,255,0);}
+    to {color: rgba(255,255,255,1);}
+}
+
+h1.typed {
+    width: auto;
+
+    span:last-child {
+        animation: blink-caret .75s step-end infinite;
+    }
+}
+
+h1.typed--end {
+    width: 100%;
+    span:last-child {
+        border-right: none;
+    }
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: orange; }
+    50% { border-color: transparent; }
+}
